@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, make_response
 app = Flask(__name__)
  
 @app.route('/sendDesiredHumidity/<int:humidity>', methods=['POST'])
@@ -33,5 +33,10 @@ def get_desired_humidity():
     print(f'desired humidity was send {desired_humidity}')
     return jsonify({'humidity': desired_humidity})
  
+@app.errorhandler(404)
+def not_found(error):
+    print(f'error 404')
+    return make_response(jsonify({'error': 'Not found'}), 404)
+
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0")
