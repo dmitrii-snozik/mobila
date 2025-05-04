@@ -1,0 +1,6 @@
+[Service]
+ExecStart=python3 /home/unk/Desktop/Project/server.py
+StandardOutput=journal
+StandardError=journal
+Restart=always
+WorkingDirectory=/home/unk/Desktop/Project/
